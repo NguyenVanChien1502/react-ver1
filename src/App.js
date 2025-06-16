@@ -1,22 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [text, setText] = useState('');
+
+  const handleClick = () => {
+    alert('Bạn vừa nhập: ' + text);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <input
+          type="text"
+          placeholder="Nhập gì đó..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          style={{ padding: '8px', fontSize: '16px', marginRight: '10px' }}
+        />
+        <button
+          onClick={handleClick}
+          style={{ padding: '8px 12px', fontSize: '16px', cursor: 'pointer' }}
         >
-          Learn React
-        </a>
+          Gửi
+        </button>
       </header>
     </div>
   );
